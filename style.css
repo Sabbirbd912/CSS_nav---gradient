@@ -1,0 +1,138 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --primaryColor: #ba5300;
+    --secondaryColor: navy;
+    --textSize: 30px;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    /* Linear Gradient */
+    background: linear-gradient(135deg, #272423, #eeebe8);
+    color: white;
+}
+
+.container {
+    width: 100%;
+    background-color: var(--primaryColor);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    position: fixed;
+}
+
+nav {
+
+    margin: 0;
+    padding: 0;
+}
+
+.navebar {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navebar a {
+    display: block;
+    text-decoration: none;
+    color: black;
+    padding: 8px;
+}
+
+.navebar a:hover {
+    background-color: #1600ba;
+    color: rgb(0, 255, 26);
+}
+
+.navebar li {
+    position: relative;
+}
+
+.navlink {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 0;
+    list-style: none;
+    min-width: 120px;
+    background-color: var(--primaryColor);
+    display: none;
+}
+
+.navebar li:hover>.navlink {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* if there is submenu then show arrow */
+.navebar li:has(> .navlink)>a::after {
+    content: "▾";
+    margin-left: 5px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+/* Hover -> direction change */
+.navebar li:has(> .navlink):hover>a::after {
+    transform: rotate(180deg);
+}
+
+
+/* border Gradient Animation start */
+.btn {
+    position: relative;
+    padding: 10px 25px;
+    border-radius: 25px;
+    background: transparent;
+    border: 3px solid transparent;
+    font-size: 16px;
+    cursor: pointer;
+}
+.btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 25px;
+    padding: 3px;
+    background: linear-gradient(90deg, #ff00cc, #3333ff, #00ffcc, #ff9900);
+    background-size: 300% 300%;
+    animation: borderMove 5s linear infinite;
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+}
+@keyframes borderMove {
+    0% {        background-position: 0% 50%;    }
+    50% {        background-position: 100% 50%;    }
+    100% {        background-position: 0% 50%;    }
+}
+
+/* border Gradient Animation End */
+
+.g-box{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding: 20px;
+    width: 200px;
+    height: 200px;
+    border: 2px solid #eeebe8 ;
+    background: linear-gradient(to right, blue,  red, white);
+}
